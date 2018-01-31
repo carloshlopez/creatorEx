@@ -2,39 +2,46 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { CameraTabDefaultPagePage } from '../pages/camera-tab-default-page/camera-tab-default-page';
+import { CartTabDefaultPagePage } from '../pages/cart-tab-default-page/cart-tab-default-page';
+import { CloudTabDefaultPagePage } from '../pages/cloud-tab-default-page/cloud-tab-default-page';
+import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { Camera } from '@ionic-native/camera';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiCallerProvider } from '../providers/api-caller/api-caller';
+
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    CameraTabDefaultPagePage,
+    CartTabDefaultPagePage,
+    CloudTabDefaultPagePage,
+    TabsControllerPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    CameraTabDefaultPagePage,
+    CartTabDefaultPagePage,
+    CloudTabDefaultPagePage,
+    TabsControllerPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiCallerProvider
   ]
 })
 export class AppModule {}
